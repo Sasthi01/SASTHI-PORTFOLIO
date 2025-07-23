@@ -1,0 +1,362 @@
+You groan as you slowly regain consciousness. Your eyes shoot open as you suddenly realise you don't remember how you got here, and a creeping sense of unease settles over you. #1
+1
+Continue #2 $
+
+It's dark except for the sparking electrical box on the wall. You unsteadily get up to investigate the electrical box. Maybe you can get the lights to work so that you can find a way out of here. #2
+1
+Try turn the Lights on... #3 $
+
+You notice four hanging wires of different colours - red, green, blue and yellow - and a socket where one of them should have been connected. There is also a small note taped to the side of the box. You see a riddle on the note which says:\n"I bring life to the leaves, yet I'm not the sky. I rest in the middle of the rainbow's eye. Choose me, and the path ahead will glow. Pick wrong, and darkness may grow." \nWhich wire must you connect? #3
+4
+Red #4
+Green #36 $
+Blue #4
+Yellow #4
+
+YOU CONNECTED THE WRONG WIRE AND GOT BURNT! #4
+1
+Try Again #3
+
+You successfully turned the lights on but the throbbing pain in your hand reminds you that you still have an open wound. Maybe there is something around here that you can treat your hand with. You find an old first aid box. Answer the following first aid questions correctly to heal your burns. #5
+1
+Okay lets do this... QUIZ ME! #6
+
+What is the first step you should take when treating a burn? #6
+4
+A) Apply ice directly to the burn #7
+B) Run cool (not cold) water over the burn for at least 10 minutes #35
+C) Cover the burn with butter or oil #7
+D) Pop any blisters that form #7
+
+Which of the following should NOT be used to treat a burn? #7
+4
+A) Aloe vera gel #8
+B) Ice #35
+C) Sterile, non-stick dressing #8
+D) Cool water #8
+
+How do you classify a burn that affects only the outer layer of skin, causing redness and mild pain? #8
+4
+A) First-degree burn #35
+B) Second-degree burn #9
+C) Third-degree burn #9
+D) Fourth-degree burn #9
+
+What is a common sign of a second-degree burn? #9
+4
+A) Charred, blackened skin #10
+B) No pain due to nerve damage #10
+C) Blisters and severe pain #35
+D) Complete destruction of muscle and bone #10
+
+What type of burn is considered the most severe? #10
+4
+ A) First-degree burn #11
+ B) Second-degree burn #11
+ C) Third-degree burn #35
+ D) Sunburn #11
+
+When should you seek emergency medical help for a burn? #11
+4
+ A) If the burn is larger than the palm of your hand #12
+ B) If the burn is on the face, hands, feet, or genitals #12
+ C) If the burn is caused by electricity or chemicals #12
+ D) All of the above #35
+
+What is the best way to cover a burn after cooling it with water? #12
+4
+ A) A dry, non-stick sterile dressing #35
+ B) A tight bandage to prevent infection #13
+ C) A piece of cotton fabric #13
+ D) Plastic wrap #13
+
+Which of the following is a sign of a serious burn that requires immediate medical attention? #13
+4
+ A) Mild redness that goes away within an hour #14
+ B) Pain that subsides quickly #14
+ C) Skin that looks leathery or white #35
+ D) Skin that peels slightly after a sunburn #14
+
+Why should you avoid popping blisters on a burn? #14
+4
+ A) It increases the risk of infection #35
+ B) It speeds up healing #15
+ C) It prevents pain #15
+ D) It helps cool the burn #15
+
+What should you do if someone has a chemical burn? #15
+4
+ A) Wipe the chemical off with a cloth #16
+ B) Rinse the area with large amounts of running water #35
+ C) Apply ointment to the burn #16
+ D) Cover the burn immediately with a bandage #16
+
+What is the primary risk associated with severe burns? #16
+4
+ A) Hypothermia #17
+ B) Dehydration and infection #35
+ C) Increased blood pressure #17
+ D) Faster healing than minor burns #17
+
+What is the best way to treat a minor burn at home? #17
+4
+ A) Apply toothpaste to the affected area #18
+ B) Run cool water over it and cover with a sterile dressing #35
+ C) Use alcohol to clean the burn #18
+ D) Scrub the burn to remove damaged skin #18
+
+Which type of burn affects all layers of skin and may damage muscles, tendons, or bones? #18
+4
+ A) First-degree burn #19
+ B) Second-degree burn #19
+ C) Third-degree burn #35
+ D) Superficial burn #19
+
+What colour might the skin appear in a third-degree burn? #19
+4
+ A) Red and swollen #20
+ B) Blistered and moist #20
+ C) White, brown, or charred #35
+ D) Purple with red spots #20
+
+If a person suffers an electrical burn, what should you do first? #20
+4
+ A) Pour water on the person #21
+ B) Move them with a wooden object if they are still in contact with the electrical source #35
+ C) Touch them to check for responsiveness #21
+ D) Apply an ice pack #21
+
+First-degree burns usually require emergency medical attention.#21
+2
+True #22
+False #35
+
+You should always apply butter or oil to a burn to help it heal faster. #22
+2
+ True #23
+ False #35
+
+Sunburn is considered a type of burn injury. #23
+2
+True #35
+False #24
+
+If clothing is stuck to a burn, you should pull it off immediately. #24
+2
+True #25
+False #35
+
+A burn that affects the airway (such as from inhaling hot smoke) is a medical emergency. #25
+2
+True #35
+False #26
+
+Ice should never be applied directly to a burn because it can cause further skin damage. #26
+2
+True #35
+False #27
+
+Electrical burns may cause internal injuries even if the skin looks normal. #27
+2
+True #35
+False #28
+
+Applying aloe vera gel can help soothe minor burns. #28
+2
+True #35
+False #29
+
+Running cold water on a burn helps stop the burning process. #29
+2
+True #35
+False #30
+
+A sunburn can cause dehydration. #30
+2
+True #35
+False #31
+
+If a burn victim is unconscious, you should check their breathing and call for emergency help. #31
+2
+True #35
+False #32
+
+Burns that affect the hands, feet, face, or genitals should always be checked by a doctor. #32
+2
+True #35
+False #33
+
+All burns will leave a scar. #33
+2
+True #34
+False #35
+
+You weren't able to heal your wounds and you end up passing out as a result of the extreme pain. #34
+1
+GAME OVER #0
+
+You got it correct! #35
+1
+Continue #100
+
+As you connect the wire, there is a surge of light. You did it! You rush toward the door, only to find it locked. A keypad blinks on the right door, its screen displaying a cursor, waiting for an input. You need a code. #36
+1
+Find the code... #37 $
+
+You notice the locked cupboard on the right and locked box on the table to the left... You shake the box. You hear a faint rattle. If those are keys and they open the cupboard, you might be one step closer to getting out. But first, you need to open the box. Solve this next puzzle to do so: #37
+1
+Take me to the puzzle: #38 $
+
+Give number code of the word 'PUZZLE'. Hint: e = 5. #38
+4
+16212626125 #49
+1620262675 #39
+18262691 #39
+181510105 #39
+
+Wrong! Try this: Give number code of the word 'DECIDE'. Hint: e = 5. #39
+4
+452324 #40
+5729635765 #40
+453945 #49
+2653265 #40
+
+Wrong! Try this: Give number code of the word 'LEVEL'. Hint: e = 5. #40
+4
+18526518 #41
+12522512 #49
+13522513 #41
+12322312 #41
+
+Wrong! Try this: Give number code of the word 'ESCAPE'. Hint: e = 5. #41
+4
+51931165 #49
+51631465 #42
+21841592 #42
+31931175 #42
+
+Wrong! Try this: Give number code of the word 'CHOOSE'. Hint: e = 5. #42
+4
+371616195 #43
+381515195 #49
+581010195 #43
+381010193 #43
+
+Wrong! Try this: Give number code of the word 'CIPHER'. Hint: e = 5. #43
+4
+39168319 #44
+39108516 #44
+19148518 #44
+39168518 #49
+
+Wrong! Try this: Give number code of the word 'SECRET'. Hint: e = 5. #44
+4
+195410520 #45
+165917520 #45
+175416519 #45
+195318520 #49
+
+Wrong! Try this: Give number code of the word 'MYSTERY'. Hint: e = 5. #45
+4
+1561719263152 #46
+1875381351465 #46
+1325192051825 #49
+13201921451725 #46
+
+Wrong! Try this: Give number code of the word 'RIDDLE'. Hint: e = 5. #46
+4
+1653395 #47
+18944125 #49
+18922105 #47
+163822825 #47
+
+Wrong! Try this: Give number code of the word 'DECODE'. Hint: e = 5. #47
+4
+4531545 #49
+4521845 #48
+3591735 #48
+4531445 #48
+
+You weren't able to figure out how to open the box, you therefore don't manage to escape and you die in that basement. Oh why, oh why couldn't you have just solved at least one of the codes! #48
+1
+GAME OVER #0
+
+
+The box opens! Inside you see two keys... #49
+2
+Examine them... #50 $
+Check out the lock first so you know which key to use #51
+
+You walk over to the cupboard and investigate the lock. The keyhole is gold.  #51
+1
+Go back and examine the two keys... #50 $
+
+The gold key... Do you want to: #50
+2
+Take it #52
+Leave it #60
+
+The silver key... Do you want to: #60
+2
+Take it #64
+Leave it #65
+
+The silver key... Do you want to: #52
+2
+Take it #53
+Leave it #61
+
+You move over to the lock and try the silver key, but it will not fit!  You decide it must be the gold key so you go back and collect it from the box #62
+1
+Try the gold key in the lock...#63
+
+With no keys in hand you decide to rather examine the lock first, that is when you observe that the key hole in the lock is gold...#65
+1
+Go back and examine the two keys... #50 
+
+The gold key opens the lock! The cupboard opens. You see a crumpled piece of paper. Unfolding the page, you see a number of math questions. Why would anyone keep a page of random math questions? Unless... Maybe these could be a hint for the keypad code! Taking the paper to the keypad, you decide to take an educated guess...#53
+1
+See the maths problems...#54 $
+
+The gold key opens the lock! The cupboard opens. You see a crumpled piece of paper. Unfolding the page, you see a number of math questions. Why would anyone keep a page of random math questions? Unless... Maybe these could be a hint for the keypad code! Taking the paper to the keypad, you decide to take an educated guess... #61
+1
+See the maths problems...#54 $
+
+The gold key opens the lock! The cupboard opens. You see a crumpled piece of paper. Unfolding the page, you see a number of math questions. Why would anyone keep a page of random math questions? Unless... Maybe these could be a hint for the keypad code! Taking the paper to the keypad, you decide to take an educated guess... #63
+1
+See the maths problems...#54 $
+
+1. log(100)\nInput first number: #54
+3
+1 #55
+2 #56
+10 #55
+
+Wrong! Start Over! \n1. log(100) Input first number: #55
+3
+1 #55
+2 #56
+10 #55
+
+2. 2 + 3! \nInput second number: #56
+3
+8 #57
+6 #55
+5 #55
+
+3. cos(0) \nInput third number: #57
+3
+0 #55
+3 #55
+1 #58
+
+4. Dx(6x + 4y + 1) \nInput fourth number: #58
+3
+6 #59 $
+4 #55
+1 #55
+
+The keypad blinks. After a few moments, You hear a small click. Success! You haul the door open.\nIn front of you is a narrow wooden staircase. You hesitantly start creeping up it... #59
+1
+Continue the escape...#-1 $
+
