@@ -7,7 +7,7 @@ I'm a detail-oriented and creative Computer Science & IT undergraduate from UKZN
 
 ## 🚀 Projects
 
-### [📦 POS & Invoicing System – LG Packaging]
+### [📦 POS & Invoicing System – LG Packaging] (https://github.com/Sasthi01/SASTHI-PORTFOLIO/tree/TRAPPED-Quiz-based-Narrative-Game)
 C# + SQL Server prototype for a real-world packaging business. Includes dynamic report generation, staff-facing UI, invoicing and inventory automation.
 
 ### [🎮 Trapped – Narrative Quiz based Game]
