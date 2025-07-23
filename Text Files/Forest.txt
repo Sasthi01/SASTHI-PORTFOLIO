@@ -1,0 +1,193 @@
+As you exit the kitchen you are greeted with a creepy looking forest, you run through the dense forest, trying to put distance between you and the cabin. Suddenly the path splits into 3 different ways. #300
+3
+Choose a path #2
+Use the torch #3
+Use the map #4
+
+As you exit the living room you are greeted with a car in the driveway, too bad you didn't find any car keys inside... your only option now is to escape through the creepy looking forest\nYou run through the dense forest, trying to put distance between you and the cabin. Suddenly the path splits into 3 different ways. #1
+3
+Choose a path #2
+Use the torch #3
+Use the map #4
+
+You shine your torch down each path. The middle path is a long winding road filled with glowing mushrooms. Down the path  to the right you see the teeth of a bear trap reflecting the torch light from under a pile of dirt and leaves. The left path is completely clear and you see an opening towards the end of the path. #3
+1
+Choose a path...#2
+
+You check the map and see a tick marked at the end of the path to the left. The other two paths have crosses next to them. #4
+1
+Choose a path...#2
+
+Which path are you going to go down? #2
+3
+The path to the left #8 $
+The middle path #5 
+The path to the right #9 
+
+As you're walking down the path, you notice some red mushrooms that give off a sweet, pleasant scent. Your stomach growls as you breathe in the aroma, and you can't remember the last time you ate. Do you want to take a bite? #5
+2
+Yes #6
+No #7
+
+As you hurry down the path, you aren't careful with your footing and step right into a hidden bear trap! You scream as the teeth snap shut into your leg and you fall to the ground. Unfortunately no one comes to your aid. #9
+1
+GAME OVER #0
+
+You pluck the nearest mushroom out of the ground and take a bite. You start hallucinating and cannot see where you are walking. You end up stumbling into a bear trap. Unfortunately no one comes to your aid. #6
+1
+GAME OVER #0
+
+Your stomach growls from hunger but you continue on. There are again three paths ahead of you. What are you going to do? #7
+3
+Use the map #10
+Use the torch #11
+Choose a path #12
+
+You check the map and see a tick marked at the end of the path to the right. The other two paths have crosses next to them. #10
+1
+Choose a path...#12
+
+You shine your torch down each path. The first path to the left is long and narrow, and as you move your torch you swear you see a pair of glinting eyes from the bushes. The second path in the middle is barely even a path with how overgrown it is, and it seems to lead a lot deeper into the forest. The third path to the right is completely clear and you see an opening towards the end of the path. #11
+1
+Choose a path...#12
+
+Which path are you going to go down? #12
+3
+Left #13
+Middle #14
+Right #8 $
+
+Only a few steps into the left path a bear hurdles out the bushes! It growls as it stalks towards you. It looks hungry, and unfortunately you seem to be the only possible food around... #13
+1
+Accept your fate, its GAME OVER #0
+
+You start down the middle path. You can barely see where you're stepping in the thick foliage as you trudge on for what seems like an eternity. Your steps slow as you begin to tire and you look at your surroundings. Nothing except forest and more forest. You look down and suddenly realise that there is no longer a path. At some point you must have lost it. You panic and try backtrack, but only seem to get deeper into the forest. You have no idea which way to go and have no choice but to keep blindly searching. It feels like you'll never find a way out...#14
+1
+Accept your fate, its GAME OVER #0
+
+You find yourself in a clearing. Your heart stops as you see a tall man in the clearing, he approaches you. You must remain calm. A conversation breaks out #8
+1
+Continue #15 $
+
+Stranger: "Are you lost?" #15
+3
+"No, I'm just taking a late night walk." #16
+"No. I've been looking for my dog. He ran off earlier." #17
+"Yes. I am completely lost (you tell him everything)." #18
+
+Stranger looks at you suspiciously..."In the middle of the night? Where are you coming from??" #16
+2
+"I have been renting a cabin close by. I just wanted to get a bit of fresh air." #19
+"Wait I lied, I am completely lost (you tell him everything)." #18
+
+The stranger raises his eyebrows and gives you a look that sends shivers down your spine. He looks at your ragged clothes and dirt-smeared skin. Stranger: "But you look like you've been through hell! What happened to you?" #19
+2
+"Wait I lied, I actually have been through hell. (you tell him everything)" #18
+"I actually fell down when I was looking for firewood. Clumsy me!" #17
+
+The stranger replies in a unsettling tone, "That sounds like quite the task. Would you like me to help you?" #17
+2
+Accept help and tell the stranger the truth. #18
+Reject help #20 $
+
+He stands silently as you summarise the recent events. "...Please help me."\nThe stranger steps towards you and places a hand on your shoulder. "I'm sorry", he says and briefly pauses. Maybe he's thinking of which way to get out of here! "Forgive me", he says. "Wha –?", you start, but he cuts you off. "You know too much. We cannot afford to let you go."... #18
+1 
+GAME OVER #0
+
+The stranger disappears back into the forest.\nUnsure what to do next, you debate on whether you should have asked for help. Oh well, its too late now... \n Just then you hear a noise... What do you do? #20
+3
+Ignore it. #21
+Start running #22
+Go towards the noise #23 $
+
+You think it "must be the wind" and keep moving. Then you feel something heavy on your back. You collapse to the ground. As the world fades to black, the last thing you see is your kidnapper standing over you. #21
+1
+GAME OVER #0
+
+You start running. You can hear heavy footsteps behind you, you realise its your kidnapper chasing you.\n\nWhat do you do? #22
+3
+Turn around and face him #23 $
+Climb a tree #24
+Hide #25
+
+You spot a bush and try to hide from the kidnapper. Suddenly you feel a presence behind you. You slowly turn you head to see the kidnapper standing behind you with a baseball bat... #25
+1
+GAME OVER #0
+
+You run to the nearest tree and start climbing it as fast as you can. \n You notice an axe wedged into the tree. What do you do? #24
+2
+Take it. #26
+Leave it. #38
+
+"I can't stay up here forever...", you think to yourself, "I have to escape from this forest so I'm going to have to face my kidnapper." #26
+1
+Jump down, its time to fight! #23 $
+
+"I can't stay up here forever...", you think to yourself, "I have to escape from this forest so I'm going to have to face my kidnapper." #38
+1
+Jump down, its time to fight! #23 $
+
+The kidnapper is standing in the clearing, gripping a baseball bat. He staring straight at you. You can't run, you have to fight. You have 10 SECONDS to react to each move. Deplete his health bar to win. P.S Weapons deal more damage. (It is not recommended to use the speech from now on) #23
+1
+Okay lets do this! Its now or never... #27 $
+
+The kidnapper takes a step forward, bat raised and ready to strike. \n What will you do? #27
+2
+Throw sand in his eyes #28 $
+Kick him in the shin #102 $
+
+As if barely phased, the kidnapper lunges and grabs you. Your breath comes in short, panicked gasps.\nYou need to break free, what will you do? #28
+3
+Elbow him #29 $
+Thrust the knife up #103 $
+Headbutt him #104 $
+
+You slip free of his grasp! The kidnapper shouts in frustration and swings his bat, aiming for your head! #29
+3
+Duck #30 $
+Dart the knife at him #105 $
+Say, "Hold up, lets talk about this" #31
+
+You lift your hands up in surrender saying "Wait! Let's talk about this". Before you can continue your statement, you see the bat swing towards you as the world fades to black. #31
+1
+GAME OVER #0
+
+The kidnapper raises the bat again, but this time you see an opening.\nWhat will you do? #30
+3
+Swing the axe #32 $
+Use the knife #106 $
+Punch him #107 $
+
+Stunned by your fighting instincts, the kidnapper drops the bat, it's within arm's reach. Do you pick it up? #32
+2
+Pick it up #108
+Leave it #33
+
+What do you do next? #33
+4
+Hit him with the bat. #34 $
+Swing the axe low. #109 $
+Lunge forward with the knife. #110 $
+You have no weapons to use so you kick him between the legs with all your might. #111 $
+
+The kidnapper is wounded, but still standing. His breath is ragged and uneven. #34
+3
+Hit him with the bat #35 $
+Swing the axe. #112 $
+Punch him with all your might #113 $
+
+You injured him enough that he passed out. You stumble backwards, in disbelief as to what you've managed to accomplish. Just then you hear some sirens in the distance, you run through the forest frantically towards them and suddenly you're on the road and so are the police. You collapse out of shear exhaustion. You have made it! #36
+1
+GAME OVER, YOU WON! #-1
+
+You get pushed and you stumble. The last thing you see it the kidnapper standing over you...If only you had done things slightly differently from the beginning #37
+1
+GAME OVER #0
+
+You don't have the required item in your inventory to perform this action... #100
+1
+Pick again #101
+
+You took too long to react and the kidnapper shoves you backwards. You fall. The last thing you see it the kidnapper standing over you... #500
+1
+GAME OVER #0

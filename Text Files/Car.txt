@@ -1,0 +1,239 @@
+As you exit the living room you find yourself at the beginning of a dirt road, an old car is parked in the driveway...after the TV incident the kidnapper must be suspicious. You need to escape quickly before he comes back to check. YOU HAVE 5 MINUTES TO ESCAPE. \n\n What do you do? #1
+2
+Try get the car started #2 $
+This car looks old...I doubt it will start, lets rather just make a run for it along the road #3
+
+You take off at full sprint down the road, but by now you are tired and your feet are feeling heavy beneath you. "I'm not a sprinter what was I thinking?!" As your heart rate starts to skyrocket you hear fast approaching footsteps behind you, Its the kidnapper! Gee I'm fully bathed in moonlight on this road, Of course he found me! You run as far as you can but it's not enough. The kidnapper catches up to you! #3
+1
+GAME OVER #0
+
+You tried to start the car using the car key you found, but the engine sputters. You glance at the fuel gauge. It's empty. What do you do? #2
+2
+Leave car and find fuel #4 $
+Search through the cubby, maybe there will be something useful in there...#5
+
+You search the cubby and inside is a phone. You turn it on. A message comes up, "Booting up, this will take 20 seconds". What do you do? #5
+2
+Wait, once it turns on maybe I can call for help #68
+Forget about it. Leave car and look for fuel #4 $
+
+You wait for the phone to boot up. The screen lights up, and you immediately dial emergency services. A voice picks up, but something is wrong. It sounds like a recorded message, the breathing on the other end is shallow, and you hear a whisper, "You can't escape, you're going to die." The line goes dead. What do you?" #68
+2
+Look for fuel #4 $
+Forget about the car and just try make a run for it along the road #3
+
+Where do you want to look for fuel? #4
+3
+Trunk of the car #6
+Go back in the house and search for it there #7
+Look in the old shed #8
+
+You pop open the trunk, inside is a crowbar and a key. Do you want to pick up the crowbar? #6
+2
+Yes #60
+No #10
+
+Do you want to pick up the key? #10
+2
+Yes #61
+No #12
+
+You search through the rest of the trunk but there's no fuel, where do you want to go next? #12
+2
+Go back in the house and search for it there #7
+Look in the old shed #8 $
+
+You enter the house but you know that the kidnapper could be anywhere. You frantically start searching around in the dark and just as you think you might have found something you hear shallowing breathing behind you and feel something on your back. The last thing you hear is menacing laughter as the world fades to black #7
+1
+GAME OVER #0
+
+You head off towards the old shed. It's locked! How do you want to open it? #8
+3
+Use the crowbar #13
+Use a stick #14
+Use the key #15
+
+You have success! You managed to break the door open with the crowbar in just 10secs! #13
+1
+Enter the shed...#16 $
+
+You try to open the shed with the key you found...it doesn't fit! What do you do now? #15
+2
+Use the crowbar #13
+Use a stick #14
+
+You find a long stick near the shed and use it to jimmy open the door, it takes you 25 seconds to get the door open! #14
+1
+Enter the shed...#16 $
+
+You enter the shed and find a canister, but to your dismay it's empty. You spot a strange-looking fuelling station connected to a series of wires and cables leading to a flickering computer. You approach the station, hoping to fill the canister. The screen suddenly flashes: "Unauthorized Access Detected. Answer 6 verification questions to override lockdown." A timer appears, counting down from 2 minutes. You need to answer the questions quickly. #16
+1
+There's no turning back now. You need the fuel, Let's begin! #17 $
+
+1) What am I? I arrive unexpectedly and cause havoc in your program. If you don't handle me properly, I can crash everything. What am I? #17
+4
+A) An exception #18
+B) A syntax error #19
+C) A segmentation fault #19
+D) A destructor #19
+
+Correct! #18
+1
+Next question #20 
+
+Wrong! #19
+1
+Try again. But remember the time is running out...#17
+
+2) What am I? I am a function of sorts that shares the same name as my class, I come alive every time you create an instance of my class. What am I? #20
+4
+A) A destructor #22
+B) A constructor #21
+C) A function pointer #22
+D) An infinite loop #22
+
+Correct! #21
+1
+Next question #23 
+
+Wrong! #22
+1
+Try again. But remember the time is running out... #20
+
+
+3) What am I? I can show you the way to any value. I am dangerous if left unchecked. What am I? #23
+4
+A) A reference #25
+B) A pointer #24
+C) A variable #25
+D) A hacker #25
+
+Correct! #24
+1
+Next question #26
+
+Wrong! #25
+1
+Try again. But remember the time is running out... #23
+
+4) What am I? I disappear when the program stops running, leaving no trace behind. What am I? #26
+4
+A) A static variable #28
+B) A reference #28
+C) A global variable #28
+D) A local variable #27
+
+Correct! #27
+1
+Next question #29
+
+Wrong! #28
+1
+Try again. But remember the time is running out... #26
+
+5) What am I? I stand between inputs and outputs, making sure nothing unexpected sneaks in. I help prevent dangerous exploits. What am I? #29
+4
+A) A firewall #31
+B) A pointer #31
+C) Input validation #30
+D) A while loop #31
+
+Correct! #30
+1
+Next question #32
+
+Wrong! #31
+1
+Try again. But remember the time is running out... #29
+
+6) What am I? I stand in front of your data, making sure only the right people can enter. In C++, I protect access to your variables. What am I? #32
+4
+A) A firewall #34
+B) An access specifier #33
+C) A function #34
+D) A bug #34
+
+Correct! #33
+1
+Fill up the fuel canister! #35 $
+
+Wrong! #34
+1
+Try again. But remember the time is running out... #32
+
+The alarm starts ringing loudly! You didn't unlock it in time. You start running out of the shed and along the road thinking this is your only hope but you can already hear the footsteps of the kidnapper behind you, You run as far as you can but it's not enough. The last thing you feel is a sharp pain in the back of your head and then everything goes dark. #36
+1
+GAME OVER #0
+
+You fill the canister with fuel and rush over to the car. As you reach the car you see that the petrol flap is rusted shut. #35
+2
+Use the key you found in the trunk to try jimmy it open #37
+Find a small sharp stick to use #38
+
+Using the key you manage to pop the petrol cap off in 10 seconds #37
+1
+Start filling the fuel #39 $
+
+Finding a stick that will be strong enough to pry open the petrol cap is proving to be rather hard in the dark... #38
+3
+Just keep digging around, you don't really have another choice unfortunately... #40
+Use the torch you found in the living room #41
+Look for a torch in the shed #42
+
+You crawl around on your hands and knees for about 25 seconds before you come across a piece of metal that would prove perfect in prying the flap open. Success! It pops right off! #40
+1
+Start filling the fuel #39 $
+
+Back in the shed, you scrounge around for about 15 secs before you come across what looks like an old torch, but while you're in there you also find a piece of metal that would be better than a stick anyways! You run to the car and manage to use it to pry open the flap. Pop, it opens! #42
+1
+Start filling the fuel #39 $
+
+Using the torch you catch sight of a piece of old metal lying on the ground that would be perfect to use to pry open the rusted fuel flap within only 5 secs! With tool in hand, you pop it off with ease! #41
+1
+Start filling the fuel #39 $
+
+Slowly you lift the canister up, careful not spill any of the precious fuel. As you finish pouring it in, you here a distinct rustle in the bushes to your left, what do you do? #39
+3
+Hide under the car #43
+Run and hide in the shed #44
+Ignore it, it's probably just the wind #45
+
+In a panic you slide under the car hoping it will keep you hidden if that is really the kidnapper... 20 seconds go by and there is no more sound or signs of movement...What do you do? #43
+2
+Wait another 10 seconds to be sure #46
+Climb out from under the car and try sneak round to get into driver's seat #47 $
+
+Another 10 seconds goes by and still nothing... #46
+2
+Wait another 10 seconds to be absolutely sure #46
+Climb out from under the car and sneak into driver's seat #47 $
+
+You hide in the corner of the shed hoping that if that was the kidnapper that he doesn't find you! 10 secs go by before you decide running to the car and speeding away is your best option. #44
+1
+Run back to the car and climb into driver's seat #47 $
+
+You proceed slowly around the vehicle towards the drivers seat. You carefully open the car door. #45
+1
+Get into the driver's seat #47 $
+
+Now in the driver's seat freedom is so close! You try to turn the car on. There is some sputtering and it sounds like the engine is struggling to get started. Do you... #47
+3
+Abandon ship and make a run for it along the road #3
+Keep trying #48 $
+Check the bonnet #49
+
+You try again, like a miracle, the engine roars to life and you waste no time, taking off down the road at full speed. You don't stop till you encounter the police station in the nearest town where you park the car and run in, collapsing on the precinct floor, you are safe at last! #48
+1
+GAME OVER, YOU WON! #-1
+
+You get out and spend about 20 seconds checking under the bonnet, everything looks okay so you decide to just try again. Be careful, you're running out of time! #49
+1
+Climb back in the driver's seat and try the key again #48 $
+
+You took too long! You freeze as you hear footsteps coming towards you accompanied by menacing laughter. "Oh how silly of you, you thought you could run away did you? Pity. For you at least!". The kidnapper lunges out and grabs you, smothering you with a rag. Everything just goes black... #50
+1
+GAME OVER #0
+
+You don't have the required item in your inventory to perform this action... #100
+1
+Pick again #101

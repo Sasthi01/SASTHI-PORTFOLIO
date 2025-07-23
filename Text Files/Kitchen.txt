@@ -1,0 +1,152 @@
+You enter the kitchen quietly and see a door but it seems to be locked. You decide to look around the kitchen, hoping you'll find a key to the door. What do you want to look at? #1
+5
+Kettle #6
+Stove #2
+Door #3
+Cabinet #4
+Fridge #5
+
+The kettle is on, the murderer might come back when it's done. You should be fast. #6
+1
+Keep looking around... #7
+
+There's soup boiling in a pot on the stove, maybe you can do something with this later. #2
+1
+Keep looking around... #7
+
+This must be the way to get out. It's locked though, where oh where is the key??. #3
+1
+Keep looking around... #7
+
+You look at the fridge and see a grocery list and a map attached to the fridge. The grocery list seems to be written weirdly, letters are missing from words... The map also may prove useful in your escape. You should probably keep these items... #5
+4
+Move on, you don't need these. They're not a key. #7
+Keep the map #30
+Keep the grocery list that looks like code...#31
+Keep both! #32
+
+This cabinet has a lock on it that seems to require some sort of code. According to this lock, the code can only be letters. You wonder if the code is somewhere around here... #4
+2
+Try solve the code using what you've found/seen #8 
+Keep looking around... #7
+
+What do you want to look at next? #7
+5
+Kettle #6
+Stove #2
+Door #3
+Cabinet #4
+Fridge #5
+
+Looking at the grocery list you notice that the words are spelt wrong...Letters seem to be missing... Hold up! Is this the code?? You have to give it to this kidnapper, he likes his puzzles! What would the first letter of the code be? #8
+4
+D #10 
+O #9
+A #9
+P #9
+
+Correct! #10
+1
+Next letter #11 $
+
+Wrong! #9
+1
+Try again. #8
+
+What would the second letter of the code be? #11
+4
+B #13
+A #13
+E #12 
+D #13
+
+Correct! #12
+1
+Next letter #14 $
+
+Wrong! #13
+1
+Try again. #11
+
+
+What would the third letter of the code be? #14
+4
+B #16
+C #16
+D #16
+A #15
+
+Correct! #15
+1
+Next letter #17 $
+
+Wrong! #16
+1
+Try again. #14
+
+
+What would the fourth letter of the code be? #17
+4
+E #19
+B #19
+D #18
+R #19
+
+Correct! The code is inputted and the cabinet pops open! #18
+1
+Continue #20 $
+
+Wrong! #19
+1
+Try again. #17
+
+You realise the code spelt out the word DEAD, how ominous. You check the cabinet to find four glass bottles labelled A,B,C,D in that order. Taped on the inside of the cabinet door is a old piece of paper with some writing. #20
+2
+Made all this effort might as well get the poison #21
+Forget about the bottles and move on #25
+
+You examine the writing on the paper:\n"1.the poisoned cup does not sit beside bottle C\n2 bottle A if and only if bottle D is poisoned\n3.bottle B is not the poisoned one.\n4.exactly one of these statements is false" \nWhich bottle do you think the poison is in? #21
+4
+A #23
+B #23
+C #22 $
+D #23
+What do you want to do with the poison? #22
+2
+Put the bottle of what you hope is poison in the soup. #24 $
+Forget about it. Just look for the key #25
+
+What do you want to do with the poison? #23
+2
+Put the bottle of what you hope is poison in the soup. #27 $
+Forget about it. Just look for the key #25
+
+The kettle lets out a deafening whistle. You need to hide! The only place out of sight is the cabinet below the sink.\n\nThe kidnapper steps into the kitchen, and up to the boiling hot soup in the pot. The kidnapper stops, noticing the lock is not on his cabinet anymore, opens the cabinets and finds you below the sink. #25
+1
+GAME OVER #0
+
+The kettle lets out a deafening whistle. You need to hide! The only place out of sight is the cabinet below the sink.\n\nThe kidnapper steps into the kitchen, and up to the boiling hot soup in the pot. "Hmm this could be bett- ", You hear a loud thud. He collapsed onto the floor, and you quickly remove yourself from the cabinet. You see a key in his pocket and a pocket knife. You take the key, do you also keep the pocket knife? #24
+2
+Yes #35
+No #26
+
+The kettle lets out a deafening whistle. You need to hide! The only place out of sight is the cabinet below the sink.\n\nThe kidnapper steps into the kitchen, and up to the boiling hot soup in the pot. The kidnapper stops, noticing the lock is not on his cabinet anymore, opens the cabinets and finds you below the sink. #27
+1
+GAME OVER #0
+
+You run to the door, key in hand, could this be it? Are you actually about to escape?! The key turns in the lock and you open the door to a rush of wind! Ah Freedom is close! #26
+1
+Continue your escape... #-1
+
+The kettle lets out a deafening whistle almost giving you a heart attack. HE'S COMING. You hear footsteps coming from outside the kitchen. You try to find a hiding spot but it's too late.  "Aren't you a smart one?". #28
+1
+GAME OVER #0
+
+You don't have the required item in your inventory to perform this action... #100
+1
+Pick again #101
+
+
+
+
+

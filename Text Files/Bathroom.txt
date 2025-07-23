@@ -1,0 +1,30 @@
+What would you like to do? #1
+3
+Search the bathroom #2 
+Leave the bathroom #3 
+Break the window #4 $
+
+You scan the bathroom when suddenly the mirror catches your eye. Scrawled in red, is the word “Leave this room!". What would you like to do now? #2
+2
+Break the window #4 $
+Leave the bathroom #3
+
+What would you like to use to break the window? #4
+3
+The toothbrush #5 $
+The plunger #6 $
+The shower rail #7 $
+
+You start tapping the window with the toothbrush hoping it will break, you're making very little progress when suddenly the kidnapper, alerted by the insistent tapping, finds you in the bathroom! #5
+1
+GAME OVER #0
+
+You brace yourself then charge toward the window with the plunger. It got stuck on the window. In your attempt to pull it off, you pull the glass with you and it smashes. #6
+1
+GAME OVER #0
+
+You charge towards the window, curtain rail extended. It smashes through the window loudly. You climb out the window with a few scratches and fall to the ground. Before you can stand up you see the kidnapper looming over you. Everything goes black... #7
+1
+GAME OVER #0
+
+

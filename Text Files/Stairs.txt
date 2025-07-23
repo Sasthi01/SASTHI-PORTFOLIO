@@ -1,0 +1,9 @@
+There are three rooms at the top of the staircase. The room on the left is the kitchen, the stairs lead to the bathroom, and the room on the right is the living room. #1
+1
+Continue #2
+
+Maybe you can escape through one of them...What would you like to do? #2
+3
+Search the bathroom #-1 $
+Search the kitchen #-2 $
+Search the living room #-3 $
