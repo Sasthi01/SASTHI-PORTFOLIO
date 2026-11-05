@@ -130,6 +130,7 @@ transmitting readings to the Flask backend. End-to-end monitoring
 sessions were used to check that readings reached the backend and could
 be viewed through the application.
 
+<img src= "/images/login.jpeg" >
 <img src= "/images/dark.jpeg" >
 <img src= "/images/light.jpeg" >
 
