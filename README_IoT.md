@@ -47,26 +47,15 @@ The project uses a distributed architecture:
 
 ## Hardware Components
 
-  -----------------------------------------------------------------------
-  Component                           Purpose
-  ----------------------------------- -----------------------------------
-  Raspberry Pi 5 (8 GB)               Edge device for sensor acquisition
-                                      and processing
+| Component | Purpose |
+|---|---|
+| Raspberry Pi 5 (8 GB) | Edge device for sensor acquisition and processing. |
+| Grove Resistive Soil Moisture Sensor v1.4 | Detects changes in soil moisture. |
+| DFRobot Gravity 16-bit ADC DFR0553 | Converts the sensor's analogue output into digital readings. |
+| Jumper wires | Connect the sensor, ADC and Raspberry Pi. |
+| 64 GB USB flash drive | Storage device used for the Raspberry Pi operating system. |
 
-  Grove resistive soil moisture       Detects changes in soil moisture
-  sensor v1.4                         
-
-  DFRobot Gravity 16-bit ADC DFR0553  Converts the sensor's analogue
-                                      output into digital readings
-
-  Jumper wires                        Connect the sensor, ADC and
-                                      Raspberry Pi
-
-  64 GB USB flash drive               Storage device used for the
-                                      Raspberry Pi operating system
-  -----------------------------------------------------------------------
-
-https://github.com/Sasthi01/SASTHI-PORTFOLIO/blob/IoT-Based-Soil-Moisture-Monitoring-and-Irrigation-Decision-Support-System/images/setUp.jpg
+<img src= "/images/setUp.jpg" >
 
 The ADC communicates with the Raspberry Pi using I²C. The sensor signal
 is connected to ADC input A0.
@@ -99,11 +88,11 @@ Moisture (%) = ((Raw Reading - 1210) / (13990 - 1210)) * 100
 
 The calculated value is limited to the range 0--100%.
 
-  Relative moisture   Classification   Irrigation guidance
-  ------------------- ---------------- --------------------------
-  Below 30%           DRY              Irrigation required
-  30% to below 70%    MODERATE         Continue monitoring
-  70% or higher       WET              Irrigation not indicated
+| Relative Moisture | Classification | Irrigation Guidance |
+|---|---|---|
+| Below 30% | DRY | Irrigation required |
+| 30% to below 70% | MODERATE | Continue monitoring |
+| 70% or higher | WET | Irrigation not indicated |
 
 **Important:** This percentage is a relative moisture index based on the
 project's calibration references. It is not a laboratory measurement of
@@ -130,6 +119,8 @@ tables include:
 -   `Sensor`
 -   `Sensor_Data`
 -   `Users`
+
+<img src= "/images/Schema.jpeg" >
   
 ## Testing and Demonstration
 
@@ -138,6 +129,9 @@ readings on the Raspberry Pi, processing moisture values, and
 transmitting readings to the Flask backend. End-to-end monitoring
 sessions were used to check that readings reached the backend and could
 be viewed through the application.
+
+<img src= "/images/dark.jpeg" >
+<img src= "/images/light.jpeg" >
 
 ## Limitations
 
