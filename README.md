@@ -3,7 +3,7 @@ This repository contains all of my best work
 
 # 👋 Hi, I'm Sasthi Naidoo
 
-I'm a detail-oriented and creative Computer Science & IT undergraduate from UKZN, passionate about building thoughtful, user-centered software. This portfolio showcases my favorite academic and personal projects—from point of sale and invoicing systems for real businesses to immersive narrative games that challenge players' decisions.
+I'm a detail-oriented and creative Computer Science & IT undergraduate from UKZN, passionate about building thoughtful, user-centered software. This portfolio showcases my favorite academic and personal projects. From point of sale and invoicing systems for real businesses to immersive narrative games that challenge players' decisions.
 
 ## 🚀 Projects
 
@@ -15,7 +15,8 @@ C++/SFML-based escape-room game with branching storylines, external script files
 
 
 ## 💼 About Me
-- Graduating in 2025 from UKZN with a BSc. in Computer Science & IT  
+- Obtained BSc Honours in Computer Science in 2026
+- Graduated in 2025 from UKZN with a BSc. in Computer Science & IT  
 - Strong background in object-oriented programming, diagram modeling, and teamwork  
 - Experienced in Java, Python, C++, C#, HTML/CSS, JavaScript, SQL, and Git  
 - Enthusiastic about design thinking, accessibility, and clear documentation  
