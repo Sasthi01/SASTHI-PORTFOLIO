@@ -66,6 +66,8 @@ The project uses a distributed architecture:
                                       Raspberry Pi operating system
   -----------------------------------------------------------------------
 
+https://github.com/Sasthi01/SASTHI-PORTFOLIO/blob/IoT-Based-Soil-Moisture-Monitoring-and-Irrigation-Decision-Support-System/images/setUp.jpg
+
 The ADC communicates with the Raspberry Pi using I²C. The sensor signal
 is connected to ADC input A0.
 
