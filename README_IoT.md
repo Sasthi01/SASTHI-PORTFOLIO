@@ -26,6 +26,11 @@ It does **not** automatically activate a water pump or irrigation valve.
 -   Present current and historical monitoring information through a web
     dashboard.
 
+## DEMO Video
+
+Click the link below to watch a quick video demonstration of the system.
+https://youtu.be/NoFBuWzCXQQ 
+
 ## System Architecture
 
 The project uses a distributed architecture:
