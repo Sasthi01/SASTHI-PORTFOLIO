@@ -151,6 +151,7 @@ Users can enter their maternal characteristics and specify dietary preferences, 
 The backend processes these inputs, generates nutritional targets, filters the food catalogue, executes the MILP optimisation and presents the resulting daily meal recommendations.
 
 <img src= "/images/Screenshot%202026-10-29%20185151.png" > 
+<img src= "/images/Form.jpeg", width= 50%> 
 
 ## My Contributions
 
