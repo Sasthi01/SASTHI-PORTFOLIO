@@ -7,6 +7,9 @@ I'm a detail-oriented and creative Computer Science & IT undergraduate from UKZN
 
 ## 🚀 Projects
 
+### [Stage-Based Nutrition Recommendation for Lactating Mothers Using an Interpretable Machine Learning Model] (https://github.com/Sasthi01/SASTHI-PORTFOLIO/tree/Stage-Based-Nutrition-Recommendation-for-Lactating-Mothers-Using-an-Interpretable-Machine-Learning-Model)
+Python-based project for Honours that develops a personalised nutrition recommendation system for lactating mothers based on breastfeeding stage, individual characteristics, and dietary preferences. Uses Generalised Additive Models (GAMs) to estimate energy and protein requirements, reference-based micronutrient targets, and nutritional optimisation to generate balanced, personalised meal recommendations.
+
 ### [Cardiovascular Disease Risk Prediction & Explainable AI] (https://github.com/Sasthi01/SASTHI-PORTFOLIO/tree/Cardiovascular-Disease-Risk-Prediction)
 Python-based machine learning project for predicting cardiovascular disease risk using patient health data. Implements predictive modelling, data preprocessing, model evaluation, and Explainable AI (XAI) techniques to interpret predictions and identify key health risk factors.
 
