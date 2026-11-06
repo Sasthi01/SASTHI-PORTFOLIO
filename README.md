@@ -7,6 +7,9 @@ I'm a detail-oriented and creative Computer Science & IT undergraduate from UKZN
 
 ## 🚀 Projects
 
+### [IoT-Based Soil Moisture Monitoring and Irrigation Decision Support System] (https://github.com/Sasthi01/SASTHI-PORTFOLIO/tree/IoT-Based-Soil-Moisture-Monitoring-and-Irrigation-Decision-Support-System)
+Python + Raspberry Pi 5-based IoT system for real-time soil moisture monitoring and irrigation decision support. Integrates a resistive soil moisture sensor with a 16-bit ADC for sensor data acquisition, moisture classification, and automated irrigation recommendations. Includes data processing, calibration, and monitoring functionality.
+
 ### [📦 POS & Invoicing System – LG Packaging] (https://github.com/Sasthi01/SASTHI-PORTFOLIO/tree/POS-%26-INVOICING-SYSTEM-LG)
 C# + SQL Server prototype for a real-world packaging business. Includes dynamic report generation, staff-facing UI, invoicing and inventory automation.
 
