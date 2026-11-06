@@ -243,13 +243,12 @@ The system also identified nutrients that could not be adequately supplied in ce
 
 ### Download the Complete Source Code
 
-The complete project setup is available as a downloadable ZIP archive in this repository.
+The complete project setup is available for download here: https://drive.google.com/file/d/1nEMQ_ZYv_f44gzi1nAsJLlh8BPbzb8pc/view?usp=sharing 
 
 To obtain the project:
 
-1. Open the GitHub repository.
-2. Select the green **Code** button.
-3. Select **Download ZIP**.
+1. Click the link.
+2. Select **Download ZIP**.
 4. Extract the downloaded archive to your computer.
 
 The ZIP archive contains the complete project setup, including:
