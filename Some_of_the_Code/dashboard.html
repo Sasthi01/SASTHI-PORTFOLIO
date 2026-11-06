@@ -1,0 +1,835 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Garden Soil Monitor</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600;700&family=Young+Serif&display=swap" rel="stylesheet">
+<style>
+
+:root {
+  --bg:        #E6ECE8;
+  --surface:   #F6F8F6;
+  --ink:       #142A24;
+  --ink-2:     #44574F;
+  --muted:     #6E7F78;
+  --rule:      #C9D4CE;
+  --water:     #1D5BD6;
+  --water-wash:rgba(29, 91, 214, .08);
+  --soil-1:    #3B2A1F;
+  --soil-2:    #5B4030;
+  --soil-3:    #7A5A43;
+  --soil-4:    #94765C;
+  --glass:     rgba(255,255,255,.55);
+
+  --dry:       #C47A00;
+  --ok:        #1F6B45;
+  --wet:       #1D5BD6;
+  --alert:     #B3261E;
+  --dry-wash:  rgba(196, 122, 0, .10);
+
+  --serif: "Young Serif", Georgia, "Times New Roman", serif;
+  --sans:  "Schibsted Grotesk", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+
+  --r-lg: 22px;
+  --r-sm: 8px;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg:#10201B; --surface:#182A24; --ink:#E3ECE7; --ink-2:#B3C3BC; --muted:#8A9C95;
+    --rule:#2C423A; --water:#7FA6FF; --water-wash:rgba(127,166,255,.10);
+    --soil-1:#24180F; --soil-2:#3A281C; --soil-3:#523A2A; --soil-4:#6B5240;
+    --glass:rgba(255,255,255,.18);
+    --dry:#D9962E; --ok:#4FA877; --wet:#7FA6FF; --alert:#F0756B; --dry-wash:rgba(217,150,46,.12);
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg:#10201B; --surface:#182A24; --ink:#E3ECE7; --ink-2:#B3C3BC; --muted:#8A9C95;
+  --rule:#2C423A; --water:#7FA6FF; --water-wash:rgba(127,166,255,.10);
+  --soil-1:#24180F; --soil-2:#3A281C; --soil-3:#523A2A; --soil-4:#6B5240;
+  --glass:rgba(255,255,255,.18);
+  --dry:#D9962E; --ok:#4FA877; --wet:#7FA6FF; --alert:#F0756B; --dry-wash:rgba(217,150,46,.12);
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; }
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 16px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  font-variant-numeric: tabular-nums;
+}
+:focus-visible { outline: 2px solid var(--water); outline-offset: 3px; border-radius: 4px; }
+button { font: inherit; color: inherit; }
+
+.wrap { max-width: 1240px; margin: 0 auto; padding: 28px 32px 56px; }
+
+
+.topbar {
+  display: flex; align-items: center; justify-content: space-between; gap: 16px;
+  flex-wrap: wrap; padding-bottom: 22px; border-bottom: 1px solid var(--rule);
+}
+.brand { display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap; }
+.brand h1 { font-family: var(--serif); font-weight: 400; font-size: 1.6rem; margin: 0; letter-spacing: -.01em; }
+.brand .zone { color: var(--muted); font-size: .95rem; }
+.conn { display: flex; align-items: center; gap: 12px; font-size: .9rem; color: var(--ink-2); flex-wrap: wrap; }
+.conn .dot { width: 9px; height: 9px; border-radius: 50%; background: var(--ok); display: inline-block; margin-right: 6px; }
+.conn.offline .dot { background: var(--alert); }
+.demo-badge {
+  font-size: .8rem; font-weight: 600; padding: 3px 10px; border-radius: 999px;
+  border: 1px dashed var(--muted); color: var(--ink-2);
+}
+.theme-toggle {
+  background: none; border: 1px solid var(--rule); border-radius: 999px;
+  padding: 4px 12px; font-size: .85rem; cursor: pointer; color: var(--ink-2);
+}
+.theme-toggle:hover { border-color: var(--muted); }
+
+
+.hero {
+  display: grid; grid-template-columns: 220px 1fr; gap: 48px;
+  padding: 40px 0 36px; align-items: center;
+}
+.core { position: relative; width: 220px; }
+.core svg { display: block; width: 100%; height: auto; overflow: visible; }
+.core .waterline { transition: transform 1.4s cubic-bezier(.2,.7,.2,1); }
+@media (prefers-reduced-motion: reduce) { .core .waterline { transition: none; } }
+.core text { font-family: var(--sans); font-size: 11px; fill: var(--muted); }
+.core .tick-label-strong { fill: var(--ink-2); font-weight: 600; }
+
+.verdict { min-width: 0; }
+.reading {
+  display: flex; align-items: baseline; gap: 18px; flex-wrap: wrap; margin-bottom: 6px;
+}
+.reading .pct {
+  font-family: var(--serif); font-size: clamp(4.5rem, 10vw, 7.5rem); line-height: .9;
+  letter-spacing: -.03em;
+}
+.reading .pct small { font-size: .42em; letter-spacing: 0; margin-left: 2px; color: var(--ink-2); }
+.status-pill {
+  display: inline-flex; align-items: center; gap: 7px; font-weight: 600; font-size: .95rem;
+  padding: 6px 14px 6px 10px; border-radius: 999px; background: var(--surface);
+  border: 1.5px solid currentColor;
+}
+.status-pill svg { width: 16px; height: 16px; }
+.st-DRY { color: var(--dry); } .st-MODERATE { color: var(--ok); } .st-WET { color: var(--wet); }
+
+.verdict h2 {
+  font-family: var(--serif); font-weight: 400; font-size: clamp(1.7rem, 3.2vw, 2.4rem);
+  line-height: 1.15; margin: 18px 0 10px; max-width: 28ch; letter-spacing: -.01em;
+}
+.verdict p.explain { color: var(--ink-2); margin: 0; max-width: 60ch; font-size: 1.05rem; }
+
+.facts {
+  display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: 0;
+  margin-top: 30px; border-top: 1px solid var(--rule);
+}
+.fact { padding: 14px 18px 0 0; }
+.fact + .fact { padding-left: 18px; border-left: 1px solid var(--rule); }
+.fact dt { font-size: .85rem; color: var(--muted); margin-bottom: 2px; }
+.fact dd { margin: 0; font-size: 1.3rem; font-weight: 600; }
+.fact dd span { font-size: .85rem; font-weight: 400; color: var(--muted); margin-left: 3px; }
+
+
+.panel {
+  background: var(--surface); border-radius: var(--r-lg); padding: 24px 26px;
+}
+.panel-head { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; flex-wrap: wrap; margin-bottom: 14px; }
+.panel h3 { font-size: 1.1rem; font-weight: 700; margin: 0; letter-spacing: -.005em; }
+.panel .sub { color: var(--muted); font-size: .9rem; margin: 2px 0 0; }
+
+.seg { display: inline-flex; border: 1px solid var(--rule); border-radius: 999px; padding: 3px; }
+.seg button {
+  background: none; border: 0; padding: 5px 14px; border-radius: 999px; cursor: pointer;
+  font-size: .88rem; color: var(--ink-2);
+}
+.seg button[aria-pressed="true"] { background: var(--ink); color: var(--surface); }
+
+
+.chart-wrap { position: relative; }
+.chart-wrap svg { display: block; width: 100%; height: 300px; }
+.chart-wrap .axis text { font-size: 11.5px; fill: var(--muted); font-family: var(--sans); }
+.legend { display: flex; gap: 20px; flex-wrap: wrap; font-size: .85rem; color: var(--ink-2); margin-top: 10px; }
+.legend i { display: inline-block; vertical-align: middle; margin-right: 6px; }
+.legend .l-line { width: 18px; height: 2px; background: var(--water); }
+.legend .l-band { width: 14px; height: 10px; border-radius: 2px; }
+.legend .l-drop { width: 0; height: 0; border-left: 5px solid transparent; border-right: 5px solid transparent; border-bottom: 8px solid var(--water); }
+
+.tooltip {
+  position: absolute; pointer-events: none; background: var(--ink); color: var(--surface);
+  padding: 8px 11px; border-radius: var(--r-sm); font-size: .85rem; line-height: 1.35;
+  white-space: nowrap; transform: translate(-50%, calc(-100% - 12px)); opacity: 0;
+  transition: opacity .12s;
+}
+.tooltip b { font-size: 1rem; }
+.tooltip.show { opacity: 1; }
+
+/* grid below hero */
+.grid { display: grid; gap: 22px; }
+.row-2 { display: grid; grid-template-columns: 1.15fr 1fr; gap: 22px; }
+
+
+.alerts { list-style: none; margin: 0; padding: 0; }
+.alerts li { display: grid; grid-template-columns: 26px 1fr auto; gap: 12px; padding: 12px 0; border-top: 1px solid var(--rule); align-items: start; }
+.alerts li:first-child { border-top: 0; padding-top: 4px; }
+.alerts .ic { width: 22px; height: 22px; margin-top: 1px; }
+.alerts .t { font-weight: 600; }
+.alerts .d { color: var(--ink-2); font-size: .92rem; }
+.alerts time { color: var(--muted); font-size: .85rem; white-space: nowrap; }
+.sev-critical .ic { color: var(--alert); }
+.sev-warning .ic  { color: var(--dry); }
+.sev-info .ic     { color: var(--wet); }
+.empty { color: var(--ink-2); padding: 8px 0 4px; }
+
+
+.water-sum { display: flex; gap: 28px; flex-wrap: wrap; margin: 4px 0 18px; }
+.water-sum div { min-width: 0; }
+.water-sum strong { display: block; font-family: var(--serif); font-weight: 400; font-size: 2.2rem; line-height: 1.05; }
+.water-sum span { color: var(--muted); font-size: .88rem; }
+.bars svg { display: block; width: 100%; height: 150px; }
+.bars text { font-family: var(--sans); font-size: 11.5px; fill: var(--muted); }
+.bars .val { fill: var(--ink-2); font-weight: 600; }
+
+.share { margin-top: 22px; }
+.share h4 { font-size: .95rem; margin: 0 0 8px; font-weight: 600; }
+.share-bar { display: flex; gap: 2px; height: 14px; border-radius: 4px; overflow: hidden; }
+.share-bar div { height: 100%; }
+.share-key { display: flex; gap: 18px; flex-wrap: wrap; font-size: .85rem; color: var(--ink-2); margin-top: 8px; }
+.share-key i { display: inline-block; width: 10px; height: 10px; border-radius: 2px; margin-right: 6px; vertical-align: -1px; }
+
+
+.table-scroll { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; font-size: .93rem; }
+th { text-align: left; font-weight: 600; color: var(--muted); font-size: .85rem; padding: 0 12px 10px 0; border-bottom: 1px solid var(--rule); }
+td { padding: 10px 12px 10px 0; border-bottom: 1px solid var(--rule); white-space: nowrap; }
+td.num, th.num { text-align: right; }
+tr:last-child td { border-bottom: 0; }
+.mini { display: inline-flex; align-items: center; gap: 5px; font-weight: 600; font-size: .85rem; }
+.mini svg { width: 13px; height: 13px; }
+.irr-yes { color: var(--dry); font-weight: 600; }
+.irr-no { color: var(--muted); }
+
+footer { margin-top: 30px; color: var(--muted); font-size: .85rem; }
+
+
+@media (max-width: 920px) {
+  .row-2 { grid-template-columns: 1fr; }
+  .facts { grid-template-columns: repeat(2, minmax(0,1fr)); }
+  .fact:nth-child(3) { padding-left: 0; border-left: 0; }
+  .fact:nth-child(n+3) { padding-top: 14px; }
+}
+@media (max-width: 680px) {
+  .wrap { padding: 18px 16px 40px; }
+  .hero { grid-template-columns: 1fr; gap: 20px; padding-top: 24px; }
+  .core { width: 170px; margin: 0 auto; }
+  .panel { padding: 18px 16px; border-radius: 16px; }
+  .chart-wrap svg { height: 240px; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="topbar">
+    <div class="brand">
+      <h1>Garden Soil Monitor</h1>
+      <span class="zone" id="zone">Zone 1, sensor A0</span>
+    </div>
+    <div class="conn" id="conn" role="status" aria-live="polite">
+      <button class="theme-toggle" id="theme-toggle"
+        type="button" aria-label="Switch colour theme">
+        Dark mode
+      </button>
+      <form action="/logout" method="post" style="display:inline;">
+        <button class="theme-toggle" type="submit">
+          Log out
+        </button>
+      </form>
+      <span><span class="dot" aria-hidden="true"></span><span id="conn-text">Connecting…</span></span>
+      <span class="demo-badge" id="demo-badge" hidden>Demo data</span>
+      <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch colour theme">Dark mode</button>
+    </div>
+  </header>
+
+  <!-- Hero: soil core sample + plain-language verdict -->
+  <section class="hero" aria-labelledby="verdict-title">
+    <div class="core" aria-hidden="true">
+      <svg viewBox="0 0 220 470" id="core-svg">
+        <defs>
+          <clipPath id="tube"><rect x="30" y="16" width="104" height="440" rx="16"/></clipPath>
+          <pattern id="grain" width="14" height="14" patternUnits="userSpaceOnUse">
+            <circle cx="3" cy="4" r="1.1" fill="#000" opacity=".22"/>
+            <circle cx="10" cy="9" r=".9" fill="#fff" opacity=".14"/>
+            <circle cx="7" cy="13" r=".7" fill="#000" opacity=".18"/>
+          </pattern>
+        </defs>
+        <g clip-path="url(#tube)">
+          <!-- soil strata, top to bottom -->
+          <!-- deepest layer first; each shallower layer is drawn over it with a wavy lower edge -->
+          <rect x="30" y="16" width="104" height="440" fill="var(--soil-4)"/>
+          <path d="M30 16 H134 V334 Q112 340 90 328 T30 330Z" fill="var(--soil-3)"/>
+          <path d="M30 16 H134 V198 Q118 192 100 202 T30 200Z" fill="var(--soil-2)"/>
+          <path d="M30 16 H134 V84 Q108 92 82 88 T30 86Z" fill="var(--soil-1)"/>
+          <rect x="30" y="16" width="104" height="440" fill="url(#grain)"/>
+          <!-- water: a group translated by moisture % -->
+          <g class="waterline" id="waterline" style="transform: translateY(440px)">
+            <path d="M30 16 q13 -6 26 0 t26 0 t26 0 t26 0 V470 H30Z" fill="var(--water)" opacity=".42"/>
+            <path d="M30 16 q13 -6 26 0 t26 0 t26 0 t26 0" fill="none" stroke="var(--water)" stroke-width="2.5"/>
+          </g>
+          <!-- glass highlight -->
+          <rect x="40" y="26" width="7" height="420" rx="3.5" fill="var(--glass)"/>
+        </g>
+        <rect x="30" y="16" width="104" height="440" rx="16" fill="none" stroke="var(--ink)" stroke-opacity=".35" stroke-width="1.5"/>
+        <!-- threshold ticks (y = 16 + 440*(1 - pct/100)) -->
+        <g id="ticks">
+          <line x1="134" x2="148" y1="148" y2="148" stroke="var(--ink-2)" stroke-width="1.5"/>
+          <text x="153" y="146" class="tick-label-strong">70%</text>
+          <text x="153" y="160">wet above</text>
+          <line x1="134" x2="148" y1="324" y2="324" stroke="var(--ink-2)" stroke-width="1.5"/>
+          <text x="153" y="322" class="tick-label-strong">30%</text>
+          <text x="153" y="336">dry below</text>
+          <line x1="30" x2="134" y1="148" y2="148" stroke="#fff" stroke-opacity=".35" stroke-dasharray="3 4"/>
+          <line x1="30" x2="134" y1="324" y2="324" stroke="#fff" stroke-opacity=".35" stroke-dasharray="3 4"/>
+        </g>
+      </svg>
+    </div>
+
+    <div class="verdict">
+      <div class="reading">
+        <div class="pct" id="pct">--<small>%</small></div>
+        <span class="status-pill" id="status-pill">Waiting for data</span>
+      </div>
+      <h2 id="verdict-title">Waiting for the first reading.</h2>
+      <p class="explain" id="verdict-explain">The dashboard updates as soon as the sensor reports in.</p>
+
+      <dl class="facts">
+        <div class="fact"><dt>Raw sensor value</dt><dd id="f-raw">--</dd></div>
+        <div class="fact"><dt>Drying rate</dt><dd id="f-rate">--</dd></div>
+        <div class="fact"><dt>Last irrigation</dt><dd id="f-last">--</dd></div>
+        <div class="fact"><dt>Last reading</dt><dd id="f-time">--</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <div class="grid">
+    <!-- History -->
+    <section class="panel" aria-labelledby="hist-title">
+      <div class="panel-head">
+        <div>
+          <h3 id="hist-title">Moisture history</h3>
+          <p class="sub" id="hist-sub">Each point is one sensor reading.</p>
+        </div>
+        <div class="seg" role="group" aria-label="Time range">
+          <button type="button" data-range="6"  aria-pressed="false">6 h</button>
+          <button type="button" data-range="24" aria-pressed="true">24 h</button>
+          <button type="button" data-range="168" aria-pressed="false">7 days</button>
+        </div>
+      </div>
+      <div class="chart-wrap" id="chart-wrap">
+        <svg id="chart" role="img" aria-label="Soil moisture over time"></svg>
+        <div class="tooltip" id="tooltip"></div>
+      </div>
+      <div class="legend">
+        <span><i class="l-line"></i>Moisture %</span>
+        <span><i class="l-band" style="background:var(--dry-wash);outline:1px solid var(--dry)"></i>Dry zone, irrigation needed</span>
+        <span><i class="l-band" style="background:var(--water-wash);outline:1px solid var(--wet)"></i>Wet zone</span>
+        <span><i class="l-drop"></i>Irrigation triggered</span>
+      </div>
+    </section>
+
+    <div class="row-2">
+      <!-- Alerts -->
+      <section class="panel" aria-labelledby="alerts-title">
+        <div class="panel-head">
+          <div>
+            <h3 id="alerts-title">Alerts</h3>
+            <p class="sub">Things that need attention, newest first.</p>
+          </div>
+        </div>
+        <ul class="alerts" id="alerts" aria-live="polite"></ul>
+      </section>
+
+      <!-- Water use -->
+      <section class="panel" aria-labelledby="water-title">
+        <div class="panel-head">
+          <div>
+            <h3 id="water-title">Water use</h3>
+            <p class="sub">Irrigation only runs when the soil drops below 30%.</p>
+          </div>
+        </div>
+        <div class="water-sum">
+          <div><strong id="w-today">--</strong><span>irrigations today</span></div>
+          <div><strong id="w-week">--</strong><span>this week</span></div>
+          <div><strong id="w-litres">--</strong><span>litres, estimated</span></div>
+        </div>
+        <div class="bars"><svg id="bars" role="img" aria-label="Irrigations per day"></svg></div>
+        <div class="share">
+          <h4>Time spent in each state, last 7 days</h4>
+          <div class="share-bar" id="share-bar"></div>
+          <div class="share-key" id="share-key"></div>
+        </div>
+      </section>
+    </div>
+
+    <!-- Readings table -->
+    <section class="panel" aria-labelledby="tbl-title">
+      <div class="panel-head">
+        <div>
+          <h3 id="tbl-title">Latest readings</h3>
+          <p class="sub">The ten most recent rows stored in the database.</p>
+        </div>
+      </div>
+      <div class="table-scroll">
+        <table>
+          <thead><tr><th>Time</th><th class="num">Moisture</th><th class="num">Raw value</th><th>Status</th><th>Irrigation</th></tr></thead>
+          <tbody id="tbody"></tbody>
+        </table>
+      </div>
+    </section>
+  </div>
+
+  <footer id="footer">COMP717A IoT project.</footer>
+</div>
+
+<script>
+
+const CONFIG = {
+  USE_MOCK: false,                // true = fake demo data, false = read from the Flask API
+  // "" = same server that served this page (Flask serves it at http://<laptop-ip>:5000/).
+  // To open the file directly instead, add ?api=http://<laptop-ip>:5000 to the page address.
+  API_BASE: (new URLSearchParams(location.search).get("api") || "").replace(/\/$/, ""),
+  ENDPOINTS: {
+    history: "/api/readings/history",  // GET ?limit=N -> { readings: [...newest first], count }
+  },
+  POLL_MS: 5000,                  // how often the page asks for new data
+  READING_INTERVAL_S: 300,        // must match IOT_READING_INTERVAL on the Pi (default 300)
+  DRY: 30,                        // must match get_status() thresholds
+  WET: 70,
+  SUDDEN_CHANGE: 15,              // % jump between two readings that raises an alert
+  LITRES_PER_IRRIGATION: 2,       // placeholder: measure your pump/watering can and update
+};
+
+
+function normalise(r) {
+  const pick = (...keys) => { for (const k of keys) if (r[k] !== undefined && r[k] !== null) return r[k]; };
+  const moisture = Number(pick("moisture_percent", "Moisture_percent", "moisture"));
+  const irr = pick("irrigation_required", "Irrigation_required");
+  return {
+    id: pick("id", "Sensor_dataID", "sensor_data_id"),
+    time: new Date(pick("timestamp", "Timestamp")),
+    raw: Number(pick("raw_value", "Raw_value")),
+    moisture,
+    status: String(pick("status", "Status") || statusFor(moisture)).toUpperCase(),
+    irrigation: irr === true || irr === 1 || irr === "1" || irr === "IRRIGATION_REQUIRED",
+    source: String(pick("source", "Source") || "UNKNOWN").toUpperCase(),
+  };
+}
+const statusFor = m => m < CONFIG.DRY ? "DRY" : m < CONFIG.WET ? "MODERATE" : "WET";
+
+async function fetchHistory(hours) {
+  if (CONFIG.USE_MOCK) return Mock.history(hours);
+  // The API takes a row count, not a time window, so convert hours -> rows
+  // (plus 20% spare) and let the dashboard trim to the window itself.
+  const wanted = Math.ceil((hours * 3600 / CONFIG.READING_INTERVAL_S) * 1.2);
+  const get = async limit => {
+    const res = await fetch(`${CONFIG.API_BASE}${CONFIG.ENDPOINTS.history}?limit=${limit}`, { cache: "no-store" });
+    if (!res.ok) { const e = new Error(`API returned ${res.status}`); e.status = res.status; throw e; }
+    return res.json();
+  };
+  let body;
+  try { body = await get(Math.min(wanted, 5000)); }
+  catch (e) {
+    // an un-patched api_server.py rejects limits above 500: fall back so the page still works
+    if (e.status === 400 && wanted > 500) body = await get(500); else throw e;
+  }
+  const rows = Array.isArray(body) ? body : (body.readings || body.data || []);
+  const from = Date.now() - hours * 3600e3;
+  return rows.map(normalise).filter(r => !isNaN(r.time) && r.time >= from).sort((a, b) => a.time - b.time);
+}
+
+
+const Mock = (() => {
+  const DRY_RAW = 1210, WET_RAW = 13990, STEP = CONFIG.READING_INTERVAL_S * 1000;
+  let rows = [], m = 74, id = 1, dryStreak = 0;
+  const rnd = (a, b) => a + Math.random() * (b - a);
+
+  function next(t) {
+    const h = new Date(t).getHours() + new Date(t).getMinutes() / 60;
+    const sun = Math.max(0, Math.sin(((h - 6) / 12) * Math.PI));   // daytime evaporation
+    m -= (0.08 + 0.5 * sun) * rnd(0.7, 1.3);
+    // keep the mock clear of the threshold so noise can't make it flicker DRY/MODERATE
+    if (m < CONFIG.DRY + 0.4) {
+      dryStreak++; m = Math.min(m, CONFIG.DRY - 0.5);
+      if (dryStreak >= 2) { m = rnd(76, 84); dryStreak = 0; }   // watering happens
+    } else dryStreak = 0;
+    const mm = Math.max(0, Math.min(100, m + rnd(-0.35, 0.35)));
+    const status = statusFor(mm);
+    return {
+      id: id++, timestamp: new Date(t).toISOString(),
+      raw_value: Math.round(DRY_RAW + (mm / 100) * (WET_RAW - DRY_RAW) + rnd(-40, 40)),
+      moisture_percent: +mm.toFixed(2), status, source: "SIMULATED",
+      irrigation_required: status === "DRY" ? "IRRIGATION_REQUIRED" : "IRRIGATION_NOT_REQUIRED",
+    };
+  }
+  const now = Date.now();
+  const gapStart = now - 2 * 864e5 + 3 * 3600e3, gapEnd = gapStart + 50 * 60e3; // a sensor dropout
+  for (let t = now - 7 * 864e5; t <= now - 60e3; t += STEP) {
+    const r = next(t);
+    if (t > gapStart && t < gapEnd) continue;
+    rows.push(r);
+  }
+  return {
+    history(hours) {
+      // each poll adds one fresh reading so the page feels live
+      rows.push(next(Date.now()));
+      const from = Date.now() - hours * 3600e3;
+      return rows.filter(r => new Date(r.timestamp).getTime() >= from).map(normalise);
+    },
+  };
+})();
+
+
+function irrigationEvents(rows) {
+  // an "event" is the first reading of each run where irrigation is required
+  const ev = [];
+  rows.forEach((r, i) => { if (r.irrigation && !(rows[i - 1] && rows[i - 1].irrigation)) ev.push(r); });
+  return ev;
+}
+function dryingRate(rows) {
+  // least-squares slope of moisture over the last hour, in % per hour
+  const cutoff = rows.length ? rows[rows.length - 1].time - 3600e3 : 0;
+  const pts = rows.filter(r => r.time >= cutoff);
+  if (pts.length < 3) return null;
+  const xs = pts.map(p => (p.time - pts[0].time) / 3600e3), ys = pts.map(p => p.moisture);
+  const n = xs.length, mx = xs.reduce((a, b) => a + b) / n, my = ys.reduce((a, b) => a + b) / n;
+  let num = 0, den = 0;
+  xs.forEach((x, i) => { num += (x - mx) * (ys[i] - my); den += (x - mx) ** 2; });
+  return den ? num / den : null;
+}
+function buildAlerts(rows) {
+  const out = [];
+  if (!rows.length) return out;
+  const last = rows[rows.length - 1];
+  const ageS = (Date.now() - last.time) / 1000;
+  if (ageS > CONFIG.READING_INTERVAL_S * 2) {
+    out.push({ sev: "critical", time: last.time, title: "Sensor has stopped reporting",
+      detail: `No reading for ${fmtDuration(ageS)}. Check the sensor wiring and that main.py is running.` });
+  }
+  if (last.status === "DRY") {
+    out.push({ sev: "warning", time: last.time, title: "Soil is dry, irrigation requested",
+      detail: `Moisture is ${last.moisture.toFixed(1)}%, below the ${CONFIG.DRY}% threshold.` });
+  }
+  if (last.moisture > 90) {
+    out.push({ sev: "info", time: last.time, title: "Soil is saturated",
+      detail: "Above 90% moisture. Extra water will drain away, so skip the next watering." });
+  }
+  // irrigation log for the last 24 h, so the feed doubles as an activity history
+  irrigationEvents(rows.filter(r => r.time >= Date.now() - 864e5)).forEach(e => {
+    out.push({ sev: "info", time: e.time, title: "Irrigation triggered",
+      detail: `Moisture reached ${e.moisture.toFixed(1)}%, below the ${CONFIG.DRY}% threshold.` });
+  });
+  // history-based alerts: gaps and sudden changes
+  for (let i = rows.length - 1; i > 0 && out.length < 8; i--) {
+    const a = rows[i - 1], b = rows[i];
+    const gapS = (b.time - a.time) / 1000;
+    if (gapS > CONFIG.READING_INTERVAL_S * 2.5) {
+      out.push({ sev: "critical", time: b.time, title: "Readings were missing",
+        detail: `No data between ${fmtTime(a.time)} and ${fmtTime(b.time)} (${fmtDuration(gapS)}).` });
+    }
+    const jump = b.moisture - a.moisture;
+    if (Math.abs(jump) >= CONFIG.SUDDEN_CHANGE && !(jump > 0 && a.irrigation)) {
+      out.push({ sev: "info", time: b.time, title: jump > 0 ? "Moisture rose suddenly" : "Moisture dropped suddenly",
+        detail: `${a.moisture.toFixed(1)}% to ${b.moisture.toFixed(1)}% in one reading. Rain, manual watering, or a loose sensor?` });
+    }
+  }
+  return out.sort((x, y) => y.time - x.time);
+}
+
+
+const fmtTime = d => d.toLocaleTimeString("en-ZA", { hour: "2-digit", minute: "2-digit", hour12: false });
+const fmtDay  = d => d.toLocaleDateString("en-ZA", { weekday: "short" });
+const fmtDayTime = d => `${d.toLocaleDateString("en-ZA", { day: "numeric", month: "short" })}, ${fmtTime(d)}`;
+function fmtDuration(s) {
+  s = Math.max(0, Math.round(s));
+  if (s < 60) return `${s} s`;
+  const m = Math.round(s / 60); if (m < 60) return `${m} min`;
+  const h = Math.floor(m / 60), rm = m % 60; if (h < 24) return rm ? `${h} h ${rm} min` : `${h} h`;
+  const d = Math.floor(h / 24); return `${d} day${d > 1 ? "s" : ""}`;
+}
+const ago = d => `${fmtDuration((Date.now() - d) / 1000)} ago`;
+
+const ICONS = {
+  DRY: '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M8 2.2c2.2 3 3.6 5 3.6 6.8a3.6 3.6 0 0 1-7.2 0C4.4 7.2 5.8 5.2 8 2.2Z"/><path d="M3 13 13 3"/></svg>',
+  MODERATE: '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m3.5 8.5 3 3 6-7"/></svg>',
+  WET: '<svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 1.8c2.4 3.2 3.9 5.3 3.9 7.2a3.9 3.9 0 0 1-7.8 0c0-1.9 1.5-4 3.9-7.2Z"/></svg>',
+  critical: '<svg class="ic" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M11 2.5 20.5 19h-19L11 2.5Z" stroke-linejoin="round"/><path d="M11 9v4.5M11 16.2v.1"/></svg>',
+  warning: '<svg class="ic" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="11" cy="11" r="8.5"/><path d="M11 6.5V12M11 15.2v.1"/></svg>',
+  info: '<svg class="ic" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="11" cy="11" r="8.5"/><path d="M11 10v5.5M11 6.8v.1"/></svg>',
+};
+const STATUS_WORD = { DRY: "Dry", MODERATE: "Moderate", WET: "Wet" };
+const cssVar = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+const el = id => document.getElementById(id);
+const svgNS = "http://www.w3.org/2000/svg";
+
+
+function renderHero(rows, week) {
+  const last = rows[rows.length - 1];
+  if (!last) return;
+  const s = last.status;
+  el("pct").innerHTML = `${Math.round(last.moisture)}<small>%</small>`;
+  const pill = el("status-pill");
+  pill.className = `status-pill st-${s}`;
+  pill.innerHTML = `${ICONS[s] || ""}${STATUS_WORD[s] || s}`;
+
+  // tube fill: water top sits at 16 + 440*(1 - m/100) in svg units
+  el("waterline").style.transform = `translateY(${(440 * (1 - last.moisture / 100)).toFixed(1)}px)`;
+
+  const rate = dryingRate(rows);
+  const events = irrigationEvents(week);
+  const lastEv = events[events.length - 1];
+  let title, explain;
+  if (s === "DRY") {
+    title = "The garden needs water.";
+    explain = `Moisture has fallen below the ${CONFIG.DRY}% dry threshold, so irrigation has been requested.`;
+  } else if (s === "WET") {
+    title = "The soil is well soaked.";
+    explain = `Moisture is above ${CONFIG.WET}%. No water is needed, and adding more now would be wasted.`;
+  } else {
+    title = "The soil is holding water well.";
+    if (rate !== null && rate < -0.05) {
+      const hrs = (last.moisture - CONFIG.DRY) / -rate;
+      explain = `No irrigation needed. At the current drying rate it will reach the ${CONFIG.DRY}% dry threshold in about ${fmtDuration(hrs * 3600)}.`;
+    } else {
+      explain = "No irrigation needed. Moisture is steady right now.";
+    }
+  }
+  el("verdict-title").textContent = title;
+  el("verdict-explain").textContent = explain;
+
+  el("f-raw").textContent = last.raw.toLocaleString("en-ZA");
+  el("f-rate").innerHTML = rate === null ? "--"
+    : `${rate > 0 ? "+" : ""}${rate.toFixed(1)}<span>% per hour</span>`;
+  el("f-last").textContent = lastEv ? ago(lastEv.time) : "Not this week";
+  el("f-time").textContent = fmtTime(last.time);
+
+  // connection
+  const ageS = (Date.now() - last.time) / 1000;
+  const offline = ageS > CONFIG.READING_INTERVAL_S * 2;
+  el("conn").classList.toggle("offline", offline);
+  el("conn-text").textContent = offline ? `Sensor offline, last seen ${ago(last.time)}` : `Live, updated ${ago(last.time)}`;
+  el("demo-badge").hidden = !(CONFIG.USE_MOCK || last.source === "SIMULATED");
+}
+
+
+let chartRows = [], chartRange = 24;
+function renderChart(rows) {
+  chartRows = rows;
+  const svg = el("chart");
+  const W = svg.clientWidth || 800, H = svg.clientHeight || 300;
+  const pad = { l: 40, r: 12, t: 12, b: 30 };
+  svg.setAttribute("viewBox", `0 0 ${W} ${H}`);
+  svg.innerHTML = "";
+  const now = Date.now(), from = now - chartRange * 3600e3;
+  const x = t => pad.l + ((t - from) / (now - from)) * (W - pad.l - pad.r);
+  const y = v => pad.t + (1 - v / 100) * (H - pad.t - pad.b);
+  const add = (tag, attrs, parent = svg) => {
+    const n = document.createElementNS(svgNS, tag);
+    for (const k in attrs) n.setAttribute(k, attrs[k]);
+    parent.appendChild(n); return n;
+  };
+
+  // threshold bands
+  add("rect", { x: pad.l, y: y(CONFIG.DRY), width: W - pad.l - pad.r, height: y(0) - y(CONFIG.DRY), fill: cssVar("--dry-wash") });
+  add("rect", { x: pad.l, y: y(100), width: W - pad.l - pad.r, height: y(CONFIG.WET) - y(100), fill: cssVar("--water-wash") });
+
+  // y grid at meaningful values only
+  const axis = add("g", { class: "axis" });
+  [0, CONFIG.DRY, CONFIG.WET, 100].forEach(v => {
+    add("line", { x1: pad.l, x2: W - pad.r, y1: y(v), y2: y(v), stroke: cssVar("--rule"), "stroke-width": 1 }, axis);
+    const t = add("text", { x: pad.l - 8, y: y(v) + 4, "text-anchor": "end" }, axis); t.textContent = `${v}%`;
+  });
+  // x ticks
+  const tickEvery = chartRange <= 6 ? 3600e3 : chartRange <= 24 ? 4 * 3600e3 : 864e5;
+  const first = Math.ceil(from / tickEvery) * tickEvery;
+  for (let t = first; t <= now; t += tickEvery) {
+    const d = new Date(t);
+    const label = chartRange > 24 ? fmtDay(d) : fmtTime(d);
+    const tx = add("text", { x: x(t), y: H - 8, "text-anchor": "middle" }, axis); tx.textContent = label;
+  }
+
+  // line, broken wherever readings are missing
+  const pts = rows.filter(r => r.time >= from);
+  let d = "", prev = null;
+  pts.forEach(r => {
+    const gap = prev && (r.time - prev.time) / 1000 > CONFIG.READING_INTERVAL_S * 2.5;
+    d += `${!prev || gap ? "M" : "L"}${x(r.time).toFixed(1)},${y(r.moisture).toFixed(1)}`;
+    prev = r;
+  });
+  add("path", { d, fill: "none", stroke: cssVar("--water"), "stroke-width": 2, "stroke-linejoin": "round", "stroke-linecap": "round" });
+
+  // irrigation markers along the baseline
+  irrigationEvents(pts).forEach(e => {
+    const cx = x(e.time), by = y(0);
+    add("path", { d: `M${cx},${by - 10} l5,8 h-10z`, fill: cssVar("--water") });
+  });
+
+  // latest point
+  const last = pts[pts.length - 1];
+  if (last) add("circle", { cx: x(last.time), cy: y(last.moisture), r: 4.5, fill: cssVar("--water"), stroke: cssVar("--surface"), "stroke-width": 2 });
+
+  // hover layer
+  const cross = add("line", { y1: pad.t, y2: H - pad.b, stroke: cssVar("--ink-2"), "stroke-width": 1, "stroke-dasharray": "3 3", opacity: 0 });
+  const dot = add("circle", { r: 5, fill: cssVar("--water"), stroke: cssVar("--surface"), "stroke-width": 2, opacity: 0 });
+  const hit = add("rect", { x: pad.l, y: 0, width: W - pad.l - pad.r, height: H, fill: "transparent" });
+  const tip = el("tooltip");
+  const move = ev => {
+    if (!pts.length) return;
+    const rect = svg.getBoundingClientRect();
+    const px = ((ev.clientX - rect.left) / rect.width) * W;
+    const t = from + ((px - pad.l) / (W - pad.l - pad.r)) * (now - from);
+    let best = pts[0];
+    for (const p of pts) if (Math.abs(p.time - t) < Math.abs(best.time - t)) best = p;
+    const cx = x(best.time), cy = y(best.moisture);
+    cross.setAttribute("x1", cx); cross.setAttribute("x2", cx); cross.setAttribute("opacity", 1);
+    dot.setAttribute("cx", cx); dot.setAttribute("cy", cy); dot.setAttribute("opacity", 1);
+    tip.innerHTML = `<b>${best.moisture.toFixed(1)}%</b> ${STATUS_WORD[best.status] || best.status}<br>${fmtDayTime(best.time)}`;
+    const left = Math.min(Math.max((cx / W) * rect.width, 70), rect.width - 70);
+    tip.style.left = `${left}px`; tip.style.top = `${(cy / H) * rect.height}px`;
+    tip.classList.add("show");
+  };
+  const leave = () => { cross.setAttribute("opacity", 0); dot.setAttribute("opacity", 0); tip.classList.remove("show"); };
+  hit.addEventListener("pointermove", move);
+  hit.addEventListener("pointerleave", leave);
+
+  el("hist-sub").textContent = `${pts.length} readings in the last ${chartRange > 24 ? "7 days" : chartRange + " hours"}. Hover for details.`;
+}
+
+
+function renderAlerts(rows) {
+  const list = buildAlerts(rows).slice(0, 6);
+  el("alerts").innerHTML = list.length ? list.map(a => `
+    <li class="sev-${a.sev}">
+      ${ICONS[a.sev]}
+      <div><div class="t">${a.title}</div><div class="d">${a.detail}</div></div>
+      <time datetime="${a.time.toISOString()}">${fmtTime(a.time)}</time>
+    </li>`).join("")
+    : `<li><span></span><div class="empty">All clear. The sensor is reporting and the soil is within range.</div></li>`;
+}
+
+function renderWater(week) {
+  const events = irrigationEvents(week);
+  const startToday = new Date(); startToday.setHours(0, 0, 0, 0);
+  const today = events.filter(e => e.time >= startToday).length;
+  el("w-today").textContent = today;
+  el("w-week").textContent = events.length;
+  el("w-litres").textContent = (events.length * CONFIG.LITRES_PER_IRRIGATION).toLocaleString("en-ZA");
+
+  // bars: irrigations per day, last 7 days
+  const days = [];
+  for (let i = 6; i >= 0; i--) {
+    const d0 = new Date(startToday); d0.setDate(d0.getDate() - i);
+    const d1 = new Date(d0); d1.setDate(d1.getDate() + 1);
+    days.push({ d: d0, n: events.filter(e => e.time >= d0 && e.time < d1).length });
+  }
+  const svg = el("bars"), W = svg.clientWidth || 400, H = svg.clientHeight || 150;
+  svg.setAttribute("viewBox", `0 0 ${W} ${H}`); svg.innerHTML = "";
+  const max = Math.max(2, ...days.map(d => d.n));
+  const pad = { t: 20, b: 24 }, slot = W / days.length, bw = Math.min(34, slot * 0.5);
+  days.forEach((d, i) => {
+    const h = (d.n / max) * (H - pad.t - pad.b);
+    const cx = slot * i + slot / 2, base = H - pad.b;
+    if (d.n > 0) {
+      const p = document.createElementNS(svgNS, "path");
+      const r = Math.min(4, h), x0 = cx - bw / 2;
+      p.setAttribute("d", `M${x0},${base} V${base - h + r} q0,-${r} ${r},-${r} H${x0 + bw - r} q${r},0 ${r},${r} V${base}Z`);
+      p.setAttribute("fill", cssVar("--water"));
+      const tt = document.createElementNS(svgNS, "title"); tt.textContent = `${fmtDay(d.d)}: ${d.n} irrigation${d.n === 1 ? "" : "s"}`;
+      p.appendChild(tt); svg.appendChild(p);
+    }
+    const v = document.createElementNS(svgNS, "text");
+    v.setAttribute("x", cx); v.setAttribute("y", base - h - 6); v.setAttribute("text-anchor", "middle"); v.setAttribute("class", "val");
+    v.textContent = d.n; svg.appendChild(v);
+    const l = document.createElementNS(svgNS, "text");
+    l.setAttribute("x", cx); l.setAttribute("y", H - 6); l.setAttribute("text-anchor", "middle");
+    l.textContent = i === 6 ? "Today" : fmtDay(d.d); svg.appendChild(l);
+  });
+  const baseLine = document.createElementNS(svgNS, "line");
+  Object.entries({ x1: 0, x2: W, y1: H - pad.b, y2: H - pad.b, stroke: cssVar("--rule") }).forEach(([k, v]) => baseLine.setAttribute(k, v));
+  svg.appendChild(baseLine);
+
+  // time-in-state share
+  const counts = { DRY: 0, MODERATE: 0, WET: 0 };
+  week.forEach(r => { if (counts[r.status] !== undefined) counts[r.status]++; });
+  const total = week.length || 1;
+  const colour = { DRY: "--dry", MODERATE: "--ok", WET: "--wet" };
+  el("share-bar").innerHTML = Object.keys(counts).filter(k => counts[k])
+    .map(k => `<div style="flex:${counts[k]};background:var(${colour[k]})" title="${STATUS_WORD[k]}: ${Math.round(counts[k] / total * 100)}%"></div>`).join("");
+  el("share-key").innerHTML = Object.keys(counts)
+    .map(k => `<span><i style="background:var(${colour[k]})"></i>${STATUS_WORD[k]} ${Math.round(counts[k] / total * 100)}%</span>`).join("");
+}
+
+function renderTable(rows) {
+  el("tbody").innerHTML = rows.slice(-10).reverse().map(r => `
+    <tr>
+      <td>${fmtDayTime(r.time)}</td>
+      <td class="num">${r.moisture.toFixed(1)}%</td>
+      <td class="num">${r.raw.toLocaleString("en-ZA")}</td>
+      <td><span class="mini st-${r.status}">${ICONS[r.status] || ""}${STATUS_WORD[r.status] || r.status}</span></td>
+      <td class="${r.irrigation ? "irr-yes" : "irr-no"}">${r.irrigation ? "Required" : "Not required"}</td>
+    </tr>`).join("");
+}
+
+
+async function refresh() {
+  try {
+    const week = await fetchHistory(168);
+    const range = week.filter(r => r.time >= Date.now() - chartRange * 3600e3);
+    renderHero(week, week);
+    renderChart(week);
+    renderAlerts(week);
+    renderWater(week);
+    renderTable(week);
+    if (!week.length) el("conn-text").textContent = "Connected, but no readings stored yet";
+  } catch (err) {
+    el("conn").classList.add("offline");
+    el("conn-text").textContent = `Can't reach the API (${err.message}). Check that Flask is running.`;
+  }
+}
+
+document.querySelectorAll(".seg button").forEach(b => b.addEventListener("click", () => {
+  document.querySelectorAll(".seg button").forEach(o => o.setAttribute("aria-pressed", o === b));
+  chartRange = Number(b.dataset.range);
+  renderChart(chartRows);
+}));
+
+// theme toggle (remembered per browser when storage is available)
+const root = document.documentElement;
+function currentTheme() {
+  return root.dataset.theme || (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+}
+function applyTheme(t) {
+  root.dataset.theme = t;
+  el("theme-toggle").textContent = t === "dark" ? "Light mode" : "Dark mode";
+  try { localStorage.setItem("soil-theme", t); } catch (e) {}
+  if (chartRows.length) refresh();
+}
+try { const saved = localStorage.getItem("soil-theme"); if (saved) root.dataset.theme = saved; } catch (e) {}
+el("theme-toggle").textContent = currentTheme() === "dark" ? "Light mode" : "Dark mode";
+el("theme-toggle").addEventListener("click", () => applyTheme(currentTheme() === "dark" ? "light" : "dark"));
+
+let resizeT;
+addEventListener("resize", () => { clearTimeout(resizeT); resizeT = setTimeout(() => { renderChart(chartRows); refresh(); }, 150); });
+
+refresh();
+setInterval(refresh, CONFIG.POLL_MS);
+</script>
+</body>
+</html>
