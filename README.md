@@ -7,6 +7,8 @@ I'm a detail-oriented and creative Computer Science & IT undergraduate from UKZN
 
 ## 🚀 Projects
 
+### [Cardiovascular Disease Risk Prediction & Explainable AI] (https://github.com/Sasthi01/SASTHI-PORTFOLIO/tree/Cardiovascular-Disease-Risk-Prediction)
+
 ### [IoT-Based Soil Moisture Monitoring and Irrigation Decision Support System] (https://github.com/Sasthi01/SASTHI-PORTFOLIO/tree/IoT-Based-Soil-Moisture-Monitoring-and-Irrigation-Decision-Support-System)
 Python + Raspberry Pi 5-based IoT system for real-time soil moisture monitoring and irrigation decision support. Integrates a resistive soil moisture sensor with a 16-bit ADC for sensor data acquisition, moisture classification, and automated irrigation recommendations. Includes data processing, calibration, and monitoring functionality.
 
