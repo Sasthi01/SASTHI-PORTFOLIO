@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Maternal Nutrition Recommender</title>
+  <!-- Link to CSS in static folder -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <!-- Optional: jsPDF if you need PDF export -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+
+<body>
+  <header>
+    <h1>Stage-Based Lactation Nutrition Guidance</h1>
+    <p>Enter your details to get tailored recommendations</p>
+  </header>
+
+  <main>
+    <form id="nutritionForm">
+
+      <!-- Demographics -->
+      <div class="section-card">
+        <h3>Demographics</h3>
+        <label for="age">Age:</label>
+        <input type="number" id="age" name="age" min="18" max="49" required>
+
+        <label for="country">Country:</label>
+        <select id="country" name="country" required>
+          <option value="">Select your country</option>
+          <option value="Burundi">Burundi</option>
+          <option value="Ethiopia">Ethiopia</option>
+          <option value="Kenya">Kenya</option>
+          <option value="Nigeria">Nigeria</option>
+          <option value="South Africa">South Africa</option>
+        </select>
+
+
+        <label for="children">Number of Living Children:</label>
+        <input type="number" id="children" name="children" min="0" max="20" required>
+      </div>
+
+      <!-- Anthropometry -->
+      <div class="section-card">
+        <h3>Anthropometry</h3>
+        <label for="weight">Weight (kg):</label>
+        <input type="number" id="weight" name="weight" min="1" max="250" required>
+
+        <label for="height">Height (cm):</label>
+        <input type="number" id="height" name="height" min="50" max="250" required>
+      </div>
+
+      <!-- Maternal status -->
+      <div class="section-card">
+        <h3>Maternal Status</h3>
+        <label for="pregnant">Currently Pregnant:</label>
+        <select id="pregnant" name="pregnant" required>
+          <option value="yes">Yes</option>
+          <option value="no">No</option>
+        </select>
+
+        <label for="breastfeeding">Currently Breastfeeding:</label>
+        <select id="breastfeeding" name="breastfeeding" required>
+          <option value="yes">Yes</option>
+          <option value="no">No</option>
+        </select>
+
+        <label for="childAge">Child Age (months):</label>
+        <input type="number" id="childAge" name="childAge" min="0" max="59" required>
+      </div>
+
+      <!-- Dietary preferences -->
+      <div class="section-card">
+        <h3>Dietary Preferences</h3>
+        <div id="dietPreferences" class="checkbox-group">
+          <label>Vegetarian<input type="checkbox" value="vegetarian"> </label>
+          <label>Vegan<input type="checkbox" value="vegan"> </label>
+          <label>Lactose-free<input type="checkbox" value="lactose-free"> </label>
+          <label>Gluten-free<input type="checkbox" value="gluten-free"> </label>
+        </div>
+      </div>
+
+      <!-- Allergies -->
+      <div class="section-card">
+        <h3>Allergies</h3>
+        <div id="allergyPreferences" class="checkbox-group">
+          <label>Nuts<input type="checkbox" value="nuts"> </label>
+          <label>Soy<input type="checkbox" value="soy"> </label>
+          <label>Shellfish<input type="checkbox" value="shellfish"> </label>
+        </div>
+      </div>
+
+      <!-- Cuisine -->
+      <div class="section-card">
+        <h3>Cuisine Preferences</h3>
+        <div id="cuisinePreferences" class="checkbox-group">
+          <label>Indian<input type="checkbox" value="indian"> </label>
+          <label>Asian<input type="checkbox" value="asian"> </label>
+          <label>Mediterranean<input type="checkbox" value="mediterranean"> </label>
+          <label>Latin American<input type="checkbox" value="latin-american"> </label>
+          <label>North American<input type="checkbox" value="north-american"> </label>
+          <label>European<input type="checkbox" value="european"> </label>
+          <label>Middle Eastern<input type="checkbox" value="middle-eastern"> </label>
+          <label>African<input type="checkbox" value="african"> </label>
+        </div>
+      </div>
+
+      <!-- Food availability -->
+      <div class="section-card">
+        <h3>Foods You Cannot Access</h3>
+
+        <div id="excludedFoods">
+
+          <div class="checkbox-group">
+            <h4>Animal Proteins</h4>
+            <label>Chicken <input type="checkbox" value="chicken"></label>
+            <label>Mutton <input type="checkbox" value="mutton"></label>
+            <label>Beef <input type="checkbox" value="beef"></label>
+            <label>Fish <input type="checkbox" value="fish"></label>
+            <label>Eggs <input type="checkbox" value="eggs"></label>
+          </div>
+
+          <div class="checkbox-group">
+            <h4>Dairy</h4>
+            <label>Milk <input type="checkbox" value="milk"></label>
+            <label>Cheese <input type="checkbox" value="cheese"></label>
+            <label>Yogurt <input type="checkbox" value="yogurt"></label>
+          </div>
+
+          <div class="checkbox-group">
+            <h4>Legumes & Pulses</h4>
+            <label>Lentils <input type="checkbox" value="lentils"></label>
+            <label>Chickpeas <input type="checkbox" value="chickpeas"></label>
+            <label>Kidney Beans <input type="checkbox" value="kidney beans"></label>
+          </div>
+
+          <div class="checkbox-group">
+            <h4>Staple Grains</h4>
+            <label>Rice <input type="checkbox" value="rice"></label>
+            <label>Wheat Flour <input type="checkbox" value="wheat flour"></label>
+            <label>Maize <input type="checkbox" value="maize"></label>
+          </div>
+
+          <div class="checkbox-group">
+            <h4>Seafood</h4>
+            <label>Prawns <input type="checkbox" value="prawns"></label>
+            <label>Crab <input type="checkbox" value="crab"></label>
+            <label>Shellfish <input type="checkbox" value="shellfish"></label>
+          </div>
+
+        </div>
+      </div>
+
+      <button type="submit">Get Recommendations</button>
+    </form>
+  </main>
+
+  <div id="loading" style="display:none;">Loading...</div>
+  <div id="output"></div>
+
+  <!-- Link to JS in static folder -->
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+
+</html>

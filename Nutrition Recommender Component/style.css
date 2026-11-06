@@ -1,0 +1,185 @@
+/* style.css */
+
+/* Friendly font and background */
+body {
+  font-family: 'Poppins', Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(135deg, #fff5f7, #fcefee); /* soft pastel gradient */
+  color: #444;
+}
+
+/* Header */
+header {
+  background: linear-gradient(135deg, #ff9966, #ff5e62);
+  color: white;
+  padding: 1.5rem;
+  text-align: center;
+  border-bottom: 4px solid #ffcccb;
+  font-family: 'Nunito', sans-serif;
+}
+
+/* Form container */
+form {
+  margin: 2rem auto;
+  padding: 1.5rem;
+  max-width: 450px;
+  background: white;
+  border-radius: 14px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+/* Section cards */
+.section-card {
+  margin: 1.5rem 0;
+  padding: 1rem;
+  border-radius: 12px;
+  background: #ffffff;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+}
+
+/* Section headers */
+.section-card h3 {
+  font-size: 1.2rem;
+  color: #ff5e62;
+  margin-bottom: 0.75rem;
+  text-align: center;
+  border-bottom: 2px solid #ff9a9e;
+  padding-bottom: 0.5rem;
+}
+
+/* Labels */
+label {
+  display: block;
+  margin-top: 1rem;
+  font-weight: bold;
+  color: #ff5e62;
+}
+
+/* Inputs and selects */
+input, select, button {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0.75rem;
+  margin-top: 0.5rem;
+  border: 2px solid #ff9a9e;
+  border-radius: 10px;
+  font-size: 1rem;
+  transition: 0.2s ease;
+}
+
+input:focus, select:focus {
+  outline: none;
+  border-color: #ff5e62;
+  box-shadow: 0 0 8px rgba(255,94,98,0.4);
+}
+
+/* Checkbox groups */
+.checkbox-group {
+  margin: 1rem 0;
+  padding: 1rem;
+  border: 2px solid #ff9a9e;
+  border-radius: 10px;
+  background: #fff0f5;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem 1rem;
+}
+
+.checkbox-group h4 {
+  grid-column: span 2;
+  text-align: center;
+  font-weight: bold;
+  color: #ff5e62;
+  font-size: 1.1rem;
+  border: 2px solid #ff5e62;
+  border-radius: 6px;
+  background: #ffe6eb;
+  padding: 0.5rem;
+}
+
+.checkbox-group label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #ffffff;
+  border-radius: 8px;
+  padding: 0.5rem;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.checkbox-group label:hover {
+  background: #ffe6eb;
+}
+
+.checkbox-group input[type="checkbox"] {
+  transform: scale(1.2);
+  margin-left: auto;
+}
+
+/* CTA button */
+button {
+  background: linear-gradient(135deg, #ff9966, #ff5e62);
+  border: none;
+  border-radius: 25px;
+  padding: 0.9rem 1.5rem;
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: white;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+button:hover {
+  background: linear-gradient(135deg, #ff5e62, #ff9966);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+/* Output box */
+#output {
+  margin: 2rem auto;
+  max-width: 450px;
+  padding: 1rem;
+  background: #fff0f5;
+  border-radius: 12px;
+  border: 2px solid #ff9a9e;
+  color: #333;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+}
+
+/* Report actions */
+#reportActions {
+  margin: 1rem auto;
+  max-width: 450px;
+  text-align: center;
+}
+
+#reportActions button {
+  background: linear-gradient(135deg, #ff9966, #ff5e62);
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  padding: 0.75rem 1rem;
+  margin: 0.5rem;
+  border-radius: 8px;
+  transition: 0.3s ease;
+}
+
+#reportActions button:hover {
+  background: linear-gradient(135deg, #ff5e62, #ff9966);
+}
+
+/* Print-friendly */
+@media print {
+  header, form, #reportActions {
+    display: none;
+  }
+  #output {
+    border: none;
+    box-shadow: none;
+    background: white;
+  }
+}
